@@ -1,5 +1,6 @@
 package cn.bc.rest.jersey;
 
+import cn.bc.rest.RootResource;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
@@ -28,6 +29,7 @@ public class JerseyApplication extends ResourceConfig {
 	public JerseyApplication() {
 		// 自动扫描并注册包下的所有 jax-rs 注解的资源（@Path、@Provider）
 		packages("cn.bc");
+		register(RootResource.class);
 
 		// 注册默认 utf-8 编码的过滤器
 		// 推荐在 web.xml 中进行统一配置而不是在这里特殊配置
