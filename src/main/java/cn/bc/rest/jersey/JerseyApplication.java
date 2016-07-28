@@ -1,9 +1,12 @@
 package cn.bc.rest.jersey;
 
+import cn.bc.rest.AuthRequestFilter;
+import cn.bc.rest.LogRequestFilter;
 import cn.bc.rest.RootResource;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.Priorities;
 
 /**
  * Jersey Rest 应用程序的入口配置文件
@@ -34,6 +37,12 @@ public class JerseyApplication extends ResourceConfig {
 		// 注册默认 utf-8 编码的过滤器
 		// 推荐在 web.xml 中进行统一配置而不是在这里特殊配置
 		// register(CharsetResponseFilter.class);
+
+		// 注册登录认证过滤器
+		register(AuthRequestFilter.class, Priorities.AUTHENTICATION);
+
+		// 注册记录请求日志过滤器: for test
+		register(LogRequestFilter.class, Priorities.AUTHORIZATION);
 
 		// 设置 spring 配置文件的位置
 		property("contextConfigLocation", "spring.xml");
