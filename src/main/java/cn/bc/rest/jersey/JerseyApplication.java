@@ -5,8 +5,10 @@ import cn.bc.rest.LogRequestFilter;
 import cn.bc.rest.RootResource;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import javax.servlet.ServletConfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.Priorities;
+import javax.ws.rs.core.Context;
 
 /**
  * Jersey Rest 应用程序的入口配置文件
@@ -29,7 +31,7 @@ import javax.ws.rs.Priorities;
  */
 @ApplicationPath("rest")
 public class JerseyApplication extends ResourceConfig {
-	public JerseyApplication() {
+	public JerseyApplication(@Context ServletConfig sc) {
 		// 自动扫描并注册包下的所有 jax-rs 注解的资源（@Path、@Provider）
 		packages("cn.bc");
 		register(RootResource.class);
@@ -39,6 +41,7 @@ public class JerseyApplication extends ResourceConfig {
 		// register(CharsetResponseFilter.class);
 
 		// 注册登录认证过滤器
+		AuthRequestFilter.jwtSecretKey = sc.getInitParameter("simter.jwt.secret-key");
 		register(AuthRequestFilter.class, Priorities.AUTHENTICATION);
 
 		// 注册记录请求日志过滤器: for test
