@@ -7,17 +7,14 @@
 		<version>1.0</version>
 		<relativePath></relativePath>
 	</parent>
-	<groupId>cn.bc.rest</groupId>
 	<artifactId>bc-rest-impl-jersey</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<description>基于 jersey 的 jax-rs 实现</description>
-
 	<dependencies>
 		<dependency>
 			<groupId>cn.bc.rest</groupId>
 			<artifactId>bc-rest-core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
@@ -28,7 +25,6 @@
 			<artifactId>jersey-media-json-processing</artifactId>
 		</dependency>
 	</dependencies>
-
 	<profiles>
 		<profile>
 			<id>di: spring</id>
