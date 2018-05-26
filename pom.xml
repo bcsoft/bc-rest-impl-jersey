@@ -4,8 +4,8 @@
 	<parent>
 		<groupId>cn.bc.rest</groupId>
 		<artifactId>bc-rest-parent</artifactId>
-		<version>1.1-SNAPSHOT</version>
-		<relativePath></relativePath>
+		<version>${revision}</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>bc-rest-impl-jersey</artifactId>
 	<name>bc-rest-impl-jersey</name>
