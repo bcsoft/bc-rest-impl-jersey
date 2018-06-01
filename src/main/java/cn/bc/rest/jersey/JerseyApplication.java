@@ -31,23 +31,23 @@ import javax.ws.rs.core.Context;
  */
 @ApplicationPath("rest")
 public class JerseyApplication extends ResourceConfig {
-	public JerseyApplication(@Context ServletConfig servletConfig) {
-		// 自动扫描并注册包下的所有 jax-rs 注解的资源（@Path、@Provider）
-		packages("cn.bc");
-		register(RootResource.class);
+  public JerseyApplication(@Context ServletConfig servletConfig) {
+    // 自动扫描并注册包下的所有 jax-rs 注解的资源（@Path、@Provider）
+    packages("cn.bc");
+    register(RootResource.class);
 
-		// 注册默认 utf-8 编码的过滤器
-		// 推荐在 web.xml 中进行统一配置而不是在这里特殊配置
-		// register(CharsetResponseFilter.class);
+    // 注册默认 utf-8 编码的过滤器
+    // 推荐在 web.xml 中进行统一配置而不是在这里特殊配置
+    // register(CharsetResponseFilter.class);
 
-		// 注册登录认证过滤器
-		AuthRequestFilter.secretKey = servletConfig.getInitParameter("secret-key");
-		register(AuthRequestFilter.class, Priorities.AUTHENTICATION);
+    // 注册登录认证过滤器
+    AuthRequestFilter.secretKey = servletConfig.getInitParameter("secret-key");
+    register(AuthRequestFilter.class, Priorities.AUTHENTICATION);
 
-		// 注册记录请求日志过滤器: for test
-		register(LogRequestFilter.class, Priorities.AUTHORIZATION);
+    // 注册记录请求日志过滤器: for test
+    register(LogRequestFilter.class, Priorities.AUTHORIZATION);
 
-		// 设置 spring 配置文件的位置
-		property("contextConfigLocation", "spring.xml");
-	}
+    // 设置 spring 配置文件的位置
+    property("contextConfigLocation", "spring.xml");
+  }
 }

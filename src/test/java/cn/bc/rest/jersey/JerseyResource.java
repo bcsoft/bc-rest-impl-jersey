@@ -19,14 +19,14 @@ import java.io.InputStream;
 @Named
 @Path("jersey")
 public class JerseyResource {
-    @POST
-    @Path("form")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public String postForm(
-            @DefaultValue("true") @FormDataParam("enabled") boolean enabled,
-            //@FormDataParam("data") FileData bean,
-            @FormDataParam("file") InputStream file,
-            @FormDataParam("file") FormDataContentDisposition fileDisposition) {
-        return null;
-    }
+  @POST
+  @Path("form")
+  @Consumes(MediaType.MULTIPART_FORM_DATA)
+  public String postForm(
+    @DefaultValue("true") @FormDataParam("enabled") boolean enabled,
+    //@FormDataParam("data") FileData bean,
+    @FormDataParam("file") InputStream file,
+    @FormDataParam("file") FormDataContentDisposition fileDisposition) {
+    return null;
+  }
 }
